@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Serilog;
+using Serilog.Sinks.Elasticsearch;
 
 namespace ELK_Hello
 {
@@ -25,17 +27,29 @@ namespace ELK_Hello
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-        }
+
+	        var elasticUri = Configuration["ElasticConfiguration:Uri"];
+
+	        Log.Logger = new LoggerConfiguration()
+		        .Enrich.FromLogContext()
+		        .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticUri))
+		        {
+			        AutoRegisterTemplate = true,
+		        })
+		        .CreateLogger();
+		}
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+	        loggerFactory.AddSerilog();
+
+			app.UseMvc();
         }
     }
 }

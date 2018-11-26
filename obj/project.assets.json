@@ -11997,11 +11997,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Projects\\2018\\ELK-Hello\\ELK-Hello\\ELK-Hello.csproj",
+      "projectUniqueName": "F:\\Projects\\2018\\ELK-Hello\\ELK-Hello.csproj",
       "projectName": "ELK-Hello",
-      "projectPath": "F:\\Projects\\2018\\ELK-Hello\\ELK-Hello\\ELK-Hello.csproj",
+      "projectPath": "F:\\Projects\\2018\\ELK-Hello\\ELK-Hello.csproj",
       "packagesPath": "C:\\Users\\Desktop\\.nuget\\packages\\",
-      "outputPath": "F:\\Projects\\2018\\ELK-Hello\\ELK-Hello\\obj\\",
+      "outputPath": "F:\\Projects\\2018\\ELK-Hello\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
